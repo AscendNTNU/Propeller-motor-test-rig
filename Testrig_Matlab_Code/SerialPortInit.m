@@ -28,3 +28,7 @@ for k = 1:length(x)
     axis([0, (k+1)*SamplingTime, -100, 100])
     drawnow 
 end
+
+fclose(s)
+delete(s)
+clear s
