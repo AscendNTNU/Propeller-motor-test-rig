@@ -10,22 +10,18 @@ Period = 10;
 s = serial(SerialPort)
 set(s,'BaudRate',9600);
 fopen(s);
-time = now;
-y = zeros(1,Period/SamplingTime);
 
+figure();
 h = animatedline;
+h2 = animatedline;
 axis([1,Period,-100,100])
-
 x = linspace(0,Period,Period/SamplingTime);
-
+pause(1);
 for k = 1:length(x)
-    r = fscanf(s,'%i');
-    while(isempty(r))
-        r = fscanf(s,'%i');
-    end;
-    y(k) = r;
-    addpoints(h,x(k),y(k));
-    axis([0, (k+1)*SamplingTime, -100, 100])
+    re = SerialLogToFile(s, 'test');
+    addpoints(h,x(k),re(1));
+    addpoints(h2,x(k), re(2));
+    axis([0, (k+1)*SamplingTime, -10, 10])
     drawnow 
 end
 
