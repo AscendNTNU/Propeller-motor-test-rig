@@ -6,6 +6,11 @@ VoltageSensor::VoltageSensor(int analog_pin_p, int upper_resistor, int lower_res
   analog_pin = analog_pin_p;
 }
 
+
+VoltageSensor::VoltageSensor(int analog_pin_p) {
+  VoltageSensor(analog_pin, 1, 1);
+}
+
 int
 VoltageSensor::sample() {
    int raw = analogRead(analog_pin);
