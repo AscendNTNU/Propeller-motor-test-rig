@@ -1,7 +1,10 @@
 #include <Arduino.h>
 #include "printf.h"
 #include "SerialPkt.h"
-
+#include "HX711.h"
+#include "CurrentSensor.h"
+#include "VoltageSensor.h"
+#include "ESC.h"
 SerialPkt msg;
 
 double rand_walker[] = {0, 0};
